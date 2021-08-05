@@ -58,7 +58,7 @@ const App = () => {
     }
 
     return (
-        <div className="col-6 speed-box p-3" style={handleStyleTheme()}>
+        <div className="col-10 col-md-6 col-lg-4 speed-box p-3" style={handleStyleTheme()}>
             <div className="form-check form-switch mb-3">
                 <label className="form-check-label d-line-block position-relative" htmlFor="styeTheme">
                     <i className="bi bi-brightness-high-fill position-absolute sunIcon" style={{visibility:!changeTheme && 'hidden'}}></i>
