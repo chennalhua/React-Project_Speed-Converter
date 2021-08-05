@@ -58,14 +58,27 @@ const App = () => {
     }
 
     return (
-        <div className="col-10 col-md-6 col-lg-4 speed-box p-3" style={handleStyleTheme()}>
-            <div className="form-check form-switch mb-3">
-                <label className="form-check-label d-line-block position-relative" htmlFor="styeTheme">
-                    <i className="bi bi-brightness-high-fill position-absolute sunIcon" style={{visibility:!changeTheme && 'hidden'}}></i>
-                    <i className="bi bi-moon-fill position-absolute moonIcon" style={{visibility:changeTheme && 'hidden'}}></i>
-                    <input className="form-check-input me-2" type="checkbox" id="styeTheme" onChange={handleThemeChange} checked={changeTheme?'':'checked'}/>
-                    {changeTheme? '亮色模式':'暗色模式'}
-                </label>
+        <div className="container-fluid">
+            <div className="row justify-content-center align-items-center px-2">
+                <div className="col-sm-11 col-md-6 col-lg-5 speed-box p-3 mt-4" style={handleStyleTheme()}>
+                    <div className="form-check form-switch mb-3">
+                        <label className="form-check-label d-line-block position-relative" htmlFor="styeTheme">
+                            <i className="bi bi-brightness-high-fill position-absolute sunIcon" style={{ visibility: !changeTheme && 'hidden' }}></i>
+                            <i className="bi bi-moon-fill position-absolute moonIcon" style={{ visibility: changeTheme && 'hidden' }}></i>
+                            <input className="form-check-input me-2" type="checkbox" id="styeTheme" onChange={handleThemeChange} checked={changeTheme ? '' : 'checked'} />
+                            {changeTheme ? '亮色模式' : '暗色模式'}
+                        </label>
+                    </div>
+                    <header className="bg-blue text-light py-2 text-center">Network Speed Converter</header>
+                    <main className="container py-4">
+                        <UnitTran />
+                        <NumTran handleChange={handleChange} inputNum={inputNum}
+                            handleStyleTheme={handleStyleTheme} alertText={alertText} />
+                    </main>
+                    <footer>
+                        <StateCard inputNum={inputNum} />
+                    </footer>
+                </div>
             </div>
         </div>
     )
