@@ -1,12 +1,19 @@
 /*
 筆記
     參數.toFixed(2) 取小數點幾位
+
+    Math.floor(Math.random()*100)
+     - Math.floor() 去浮點
+     - Math.random() 產生隨機數 0 ~ 1
+        Math.random()*30 會產生 1 ~ 30 之數值
+        Math.random()*50 會產生 1 ~ 50 之數值
+        以此類推
 */
 
 const App = () => {
 
-    //建立變數 inputNum
-    let [inputNum, setInputNum] = React.useState(0);
+    //建立變數 inputNum //Math.floor 去除浮點、random 隨機產生數字
+    let [inputNum, setInputNum] = React.useState(Math.floor(Math.random()*100));
 
     //監聽 換算 SET input value (雙向綁定)
     const handleChange = (e) => {
