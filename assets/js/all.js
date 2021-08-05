@@ -23,7 +23,7 @@ const App = () => {
                 <NumTran handleChange={handleChange} inputNum={inputNum}/>
             </main>
             <footer>
-                <StateCard />
+                <StateCard inputNum={inputNum}/>
             </footer>
         </div>
     )
@@ -69,8 +69,36 @@ const NumTran = (props) => {
 
 //狀態卡
 const StateCard = (props) => {
+    //父層 App 傳進來的資料
+    const {inputNum} = props;
+    
+    //狀態卡功能
+    let state ;
+    if(inputNum <= 0){
+        state = {
+            title:'---',
+            backgroundColor:'#676767'
+        }
+    }else if(inputNum>0 && inputNum<=15){
+        state = {
+            title:'SLOW',
+            backgroundColor:'#dc3545'
+        }
+    }else if(inputNum>15 && inputNum<=40){
+        state = {
+            title:'GOOD',
+            backgroundColor:'#ffc107'
+        }
+    }else if(inputNum>40){
+        state = {
+            title:'FAST',
+            backgroundColor:'#05b22a'
+        }
+    }
+
     return (
-        <p className="showState text-center py-2 bg-blue text-light mb-0">---</p>
+        <p className="showState text-center py-2 bg-blue text-light mb-0" 
+        style={{backgroundColor:state.backgroundColor}}>{state.title}</p>
     )
 }
 
