@@ -69,9 +69,8 @@ const App = () => {
                             {changeTheme ? '亮色模式' : '暗色模式'}
                         </label>
                     </div>
-                    <header className="bg-blue text-light py-2 text-center">Network Speed Converter</header>
+                    <header className="bg-blue text-light py-2 text-center"><h1 className="fs-5 mb-0">Network Speed Converter</h1></header>
                     <main className="container py-4">
-                        <UnitTran />
                         <NumTran handleChange={handleChange} inputNum={inputNum}
                             handleStyleTheme={handleStyleTheme} alertText={alertText} />
                     </main>
@@ -85,18 +84,6 @@ const App = () => {
 }
 
 //大駝峰命名
-//單位轉換
-const UnitTran = () => {
-    return (
-        <div className="row text-center">
-            <div className="col-5">Mbps</div>
-            <div className="col-2">
-                <div className="tranIcon"><i className="bi bi-arrow-left-right"></i></div>
-            </div>
-            <div className="col-5">MB/s</div>
-        </div>
-    )
-}
 
 //換算
 const NumTran = (props) => {
@@ -107,19 +94,26 @@ const NumTran = (props) => {
     const { alertText } = props;
 
     return (
-        <div className="row text-center mt-4 align-items-baseline">
-            <div className="col-5">
-                <label htmlFor="set" className="text-secondary fw-bolder mb-3">SET</label>
-                <input type="number" id="set" className="form-control" min="0" max="100"
-                    onChange={handleChange} value={inputNum} />
-                <p className="mb-0 mt-1 text-danger alert-text">{alertText}</p>
+        <div className="row text-center mt-2 align-items-baseline flex-column flex-lg-row">
+            <div className="col-12 col-lg-5 mb-2">
+                <h3 className="fs-5 mb-3">Mbps</h3>
+                <div>
+                    <label htmlFor="set" className="text-secondary fw-bolder mb-3">SET</label>
+                    <input type="number" id="set" className="form-control" min="0" max="100"
+                        onChange={handleChange} value={inputNum} />
+                    <p className="mb-0 mt-1 text-danger alert-text">{alertText}</p>
+                </div>
             </div>
-            <div className="col-2 my-auto">
-                <i className="bi bi-arrow-right-short"></i>
+            <div className="col-12 col-lg-2 mb-2">
+                <div className="tranIcon"><i className="bi bi-arrow-left-right"></i></div>
+                <i className="bi bi-arrow-right-short d-none d-lg-block"></i>
             </div>
-            <div className="col-5">
-                <p className="text-secondary fw-bolder">SHOW</p>
-                <p className="text-blue fw-bolder" style={handleStyleTheme()}>{(inputNum / 8).toFixed(2)}</p> {/* Mbps換算MB/s要除8 */}
+            <div className="col-12 col-lg-5 my-2">
+                <h3 className="fs-5 mb-3">Mb/s</h3>
+                <div>
+                    <p className="text-secondary fw-bolder">SHOW</p>
+                    <p className="text-blue fw-bolder" style={handleStyleTheme()}>{(inputNum / 8).toFixed(2)}</p> {/* Mbps換算MB/s要除8 */}
+                </div>
             </div>
         </div>
     )

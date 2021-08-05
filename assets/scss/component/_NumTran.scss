@@ -5,3 +5,11 @@
 .alert-text{
     font-size: 14px;
 }
+
+
+@media (max-width:960px){
+    .bi-arrow-left-right::before {
+        content: "\f12b";
+        transform: rotate(90deg);
+    }
+}
