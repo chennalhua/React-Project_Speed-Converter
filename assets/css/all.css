@@ -1,1 +1,32 @@
-/* No CSS *//*# sourceMappingURL=all.css.map */
+.bg-blue {
+  background: #0082be;
+}
+
+.text-blue {
+  color: #0082be;
+}
+
+.speed-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+  /* background: #2b2b2b; */
+  border-radius: 10px;
+}
+
+header {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.bi-arrow-right-short {
+  font-size: 24px;
+}
+
+.showState {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+/*# sourceMappingURL=all.css.map */
