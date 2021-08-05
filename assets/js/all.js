@@ -60,7 +60,7 @@ const App = () => {
     return (
         <div className="container-fluid">
             <div className="row justify-content-center align-items-center px-2">
-                <div className="col-sm-11 col-md-6 col-lg-5 speed-box p-3 mt-4" style={handleStyleTheme()}>
+                <div className=" col-md-11 col-lg-5 speed-box p-3 mt-4" style={handleStyleTheme()}>
                     <div className="form-check form-switch mb-3">
                         <label className="form-check-label d-line-block position-relative" htmlFor="styeTheme">
                             <i className="bi bi-brightness-high-fill position-absolute sunIcon" style={{ visibility: !changeTheme && 'hidden' }}></i>
