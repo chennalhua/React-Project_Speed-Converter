@@ -20,14 +20,49 @@ const App = () => {
         let { value } = e.target;
         //更新 inputNum
         setInputNum(value);
+
+    }
+
+    //主題切換 true 亮 、false 暗
+    let [changeTheme, setChangeTheme] = React.useState(true)
+
+    const handleThemeChange = () => {
+        if(!changeTheme){
+            setChangeTheme(true)
+        }else{
+            setChangeTheme(false)
+        }
+    }
+
+    const handleStyleTheme = () => {
+        if(!changeTheme){
+            return{
+                background:'#fff',
+                color:'#0082be'
+            }
+        }else{
+            return{
+                background:'#212529',
+                color:'#f8f9fa'
+            }
+        }
     }
 
     return (
-        <div className="col-6 speed-box p-3">
+        <div className="col-6 speed-box p-3" style={handleStyleTheme()}>
+            <div className="form-check form-switch mb-3">
+                <label className="form-check-label d-line-block position-relative" htmlFor="styeTheme">
+                    <i className="bi bi-brightness-high-fill position-absolute sunIcon" style={{visibility:!changeTheme && 'hidden'}}></i>
+                    <i className="bi bi-moon-fill position-absolute moonIcon" style={{visibility:changeTheme && 'hidden'}}></i>
+                    <input className="form-check-input me-2" type="checkbox" id="styeTheme" onChange={handleThemeChange} checked={changeTheme?'':'checked'}/>
+                    {changeTheme? '亮色模式':'暗色模式'}
+                </label>
+            </div>
             <header className="bg-blue text-light py-2 text-center">Network Speed Converter</header>
             <main className="container py-4">
                 <UnitTran />
-                <NumTran handleChange={handleChange} inputNum={inputNum}/>
+                <NumTran handleChange={handleChange} inputNum={inputNum} 
+                handleStyleTheme={handleStyleTheme}/>
             </main>
             <footer>
                 <StateCard inputNum={inputNum}/>
@@ -55,6 +90,7 @@ const NumTran = (props) => {
     //父層 App 傳進來的資料
     const {handleChange} = props;
     const {inputNum} = props;
+    const {handleStyleTheme} = props;
 
     return (
         <div className="row text-center mt-4 align-items-center">
@@ -68,7 +104,7 @@ const NumTran = (props) => {
             </div>
             <div className="col-5">
                 <p className="text-secondary fw-bolder">SHOW</p>
-                <p className="text-blue fw-bolder">{(inputNum / 8).toFixed(2)}</p> {/* Mbps換算MB/s要除8 */}
+                <p className="text-blue fw-bolder" style={handleStyleTheme()}>{(inputNum / 8).toFixed(2)}</p> {/* Mbps換算MB/s要除8 */}
             </div>
         </div>
     )

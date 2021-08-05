@@ -1,9 +1,11 @@
+$blue:#0082be;
+
 .bg-blue{
-    background: #0082be;
+    background: $blue;
 }
 
 .text-blue{
-    color: #0082be;
+    color: $blue;
 }
 
 .speed-box{
@@ -12,11 +14,33 @@
     left: 50%;
     transform: translate(-50%,-50%);
     box-shadow: 1px 1px 10px rgba(0,0,0,.2);
-    /* background: #2b2b2b; */
     border-radius: 10px;
-}
 
-header{
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
+    //主題切換
+    .form-switch .form-check-input {
+        width: 3.5em;
+        height: 24px;
+    }
+    .form-check-input:checked {
+        background-color: $blue;
+        border-color: $blue;
+    }
+    .sunIcon{
+        top: 5px;
+        right: 70px;
+        transform: translate(-50%);
+        color: #212529;
+    }
+    .moonIcon{
+        top: 5px;
+        left: -28px;
+        transform: translate(-50%);
+        color: aliceblue;
+    }
+
+    //header
+    header{
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
 }
