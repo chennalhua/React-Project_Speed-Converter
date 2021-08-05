@@ -48,6 +48,10 @@
   font-size: 24px;
 }
 
+.alert-text {
+  font-size: 14px;
+}
+
 .showState {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;

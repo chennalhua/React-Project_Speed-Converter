@@ -14,12 +14,21 @@ const App = () => {
 
     //建立變數 inputNum //Math.floor 去除浮點、random 隨機產生數字
     let [inputNum, setInputNum] = React.useState(Math.floor(Math.random()*100));
+    let [alertText, setAlertText] = React.useState('請輸入數值')
 
     //監聽 換算 SET input value (雙向綁定)
     const handleChange = (e) => {
         let { value } = e.target;
         //更新 inputNum
         setInputNum(value);
+
+        if(value < 0){
+            setInputNum(0);
+            setAlertText('最小為 0 ,請重新輸入')
+        }else if(value > 100){
+            setInputNum(100);
+            setAlertText('最大為 100 ,請重新輸入')
+        }
 
     }
 
@@ -62,7 +71,7 @@ const App = () => {
             <main className="container py-4">
                 <UnitTran />
                 <NumTran handleChange={handleChange} inputNum={inputNum} 
-                handleStyleTheme={handleStyleTheme}/>
+                handleStyleTheme={handleStyleTheme} alertText={alertText}/>
             </main>
             <footer>
                 <StateCard inputNum={inputNum}/>
@@ -91,15 +100,17 @@ const NumTran = (props) => {
     const {handleChange} = props;
     const {inputNum} = props;
     const {handleStyleTheme} = props;
+    const {alertText} = props;
 
     return (
-        <div className="row text-center mt-4 align-items-center">
+        <div className="row text-center mt-4 align-items-baseline">
             <div className="col-5">
                 <label htmlFor="set" className="text-secondary fw-bolder mb-3">SET</label>
                 <input type="number" id="set" className="form-control" min="0" max="100"
                 onChange={handleChange} value={inputNum}/>
+                <p className="mb-0 mt-1 text-danger alert-text">{alertText}</p>
             </div>
-            <div className="col-2">
+            <div className="col-2 my-auto">
                 <i className="bi bi-arrow-right-short"></i>
             </div>
             <div className="col-5">
@@ -132,10 +143,15 @@ const StateCard = (props) => {
             title:'GOOD',
             backgroundColor:'#ffc107'
         }
-    }else if(inputNum>40){
+    }else if(inputNum>40 && inputNum<=60){
         state = {
             title:'FAST',
             backgroundColor:'#05b22a'
+        }
+    }else if(inputNum>60){
+        state = {
+            title:'SUPER FAST',
+            backgroundColor:'#b10ae9'
         }
     }
 
